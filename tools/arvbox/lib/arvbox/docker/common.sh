@@ -55,8 +55,8 @@ run_bundler() {
         fi
         ln -sf /var/lib/gems/bin/bundle /usr/local/bin
     fi
-    if ! flock /var/lib/gems/gems.lock bundle install --path $GEM_HOME --local --no-deployment $frozen "$@" ; then
-        flock /var/lib/gems/gems.lock bundle install --path $GEM_HOME --no-deployment $frozen "$@"
+    if ! flock /var/lib/gems/gems.lock bundle install --path $GEM_HOME --local --no-deployment --retry 3 $frozen "$@" ; then
+        flock /var/lib/gems/gems.lock bundle install --path $GEM_HOME --no-deployment --retry 3 $frozen "$@"
     fi
 }
 

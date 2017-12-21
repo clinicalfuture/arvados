@@ -52,3 +52,4 @@ EOF
 bundle exec rake assets:precompile
 
 (cd config && /usr/local/lib/arvbox/application_yml_override.py)
+
